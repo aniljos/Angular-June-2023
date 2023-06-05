@@ -10,7 +10,7 @@
 
 ### Repositories
 
-1. Angular APP: https://github.com/aniljos/Angular-2023-April-04
+1. Angular & Typescript: https://github.com/aniljos/Angular-June-2023
 2. Mock REST API: https://github.com/aniljos/REST-API-Mock
 
 ### JavaScript scopes
