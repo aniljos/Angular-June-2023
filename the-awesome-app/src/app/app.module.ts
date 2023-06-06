@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
-import { DataBindingComponent } from './databinding/Databinding.component';
+import { DataBindingComponent } from './databinding/databinding.component';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
