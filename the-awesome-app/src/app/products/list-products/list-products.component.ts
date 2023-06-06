@@ -12,6 +12,7 @@ export class ListProductsComponent {
 
 
   public products: Array<Product> = [];
+  public searchKey: string = "";
   private url: string;
 
   //dependency injection of HttpClient(import the HttpClinetModule)

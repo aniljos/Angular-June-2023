@@ -1,3 +1,56 @@
+<h4>Edit Product of {{ id }}</h4>
 
+<!-- FormGroup -->
+<!-- myForm is a template variable which be a refernce of the formgroup -->
+<form #myForm="ngForm">
+  <div class="form-group">
+    <label>Name</label>
+    <!-- FormControl(provided we use the ngModel) -->
+    <input name="pname" class="form-control" placeholder="Name" 
+                [(ngModel)]="product.name" #nameCtr="ngModel" required/>
+    <div class="alert alert-danger" *ngIf="nameCtr.invalid">
+        This field is required
+    </div>
+  </div>
 
-<h4>Edit Product of {{id}}</h4>
+  <div class="form-group">
+    <label>Price</label>
+    <!-- FormControl(provided we use the ngModel) -->
+    <input
+        name="pprice"
+      type="number"
+      class="form-control"
+      placeholder="Price"
+      [(ngModel)]="product.price"
+      required
+      #priceCtrl="ngModel"
+      min="100" 
+    />
+    <div class="alert alert-danger" *ngIf="priceCtrl.hasError('required')">
+        This field is required
+    </div>
+    <div class="alert alert-danger" *ngIf="priceCtrl.hasError('min')">
+        The min value is 100
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Description</label>
+    <!-- FormControl(provided we use the ngModel) -->
+    <input
+        name="pdesc"
+        class="form-control"
+        placeholder="Description"
+        [(ngModel)]="product.description"
+    />
+  </div>
+  <br />
+  <div>
+    <button class="btn btn-primary" (click)="save()" [disabled]="myForm.invalid || myForm.pristine">Save</button>&nbsp;
+    <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+  </div>
+</form>
+
+<pre>
+    {{ product | json }}
+</pre>

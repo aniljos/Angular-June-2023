@@ -1,5 +1,16 @@
 <h4>Products</h4>
 
+
+<a href="/newproduct">New Product</a>
+
+<div>
+    <input type="search" class="form-control" [(ngModel)]="searchKey"/>
+
+    <div *ngIf="searchKey" class="alert alert-primary">
+        Searching for {{searchKey}}
+    </div>
+</div>
+<br/>
 <table class="table">
     <thead>
         <tr>
@@ -12,12 +23,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of products; index as i; even as even; odd as odd" 
+        <tr *ngFor="let item of products | productFilter : searchKey; index as i; even as even; odd as odd" 
                     [ngClass]="{oddCls: odd, evenCls: even}">
             <td>{{i}}</td>
             <td>{{item.id}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.price}}</td>
+            <td>{{item.name | uppercase}}</td>
+            <td>{{item.price | currency : 'INR'}}</td>
             <td>{{item.description}}</td>
             <td>
                 <button class="btn btn-warning" (click)="editProduct(item)">Edit</button>&nbsp;
