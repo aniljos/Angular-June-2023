@@ -7,6 +7,7 @@ import { DataBindingComponent } from './databinding/databinding.component';
 import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
+import { ProductsModule } from './products/products.module';
 
 //map the routes to the view(components)
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   imports: [
     BrowserModule, 
     FormsModule, 
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ProductsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
