@@ -29,8 +29,6 @@ export class AddProductComponent {
                   alert("Failed to save");
                 }
               });
-
-    
   }
 
   cancel(){
