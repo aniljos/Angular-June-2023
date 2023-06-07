@@ -7,12 +7,13 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { FormsModule } from '@angular/forms';
 import { ProductFilterPipe } from './product-filter.pipe';
 import { AddProductComponent } from './add-product/add-product.component';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 
 const routes: Routes = [
-  {path: "products", component: ListProductsComponent},
-  {path: "products/add", component: AddProductComponent},
-  {path: "products/:id", component: EditProductComponent}
+  {path: "products", component: ListProductsComponent, canActivate:[AuthGuardService]},
+  {path: "products/add", component: AddProductComponent, canActivate:[AuthGuardService]},
+  {path: "products/:id", component: EditProductComponent, canActivate:[AuthGuardService]}
   
 ]
 
