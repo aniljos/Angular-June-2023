@@ -5,6 +5,13 @@
     <input class="form-control" type="search" placeholder="Search" formControlName="search"/>
 </div>
 
-<div>
-    <!-- Results -->
+<!-- <div *ngFor="let item of results">
+  
+    <p>{{item}}</p>
+</div> -->
+
+
+<div *ngFor="let item of $results | async">
+    
+    <p>{{item}}</p>
 </div>

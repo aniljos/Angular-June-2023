@@ -11,6 +11,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class SearchComponent {
 
   public formGroup: FormGroup;
+  public results: Array<string> = [];
+  public $results?: Observable<Array<string>>;
+
   constructor(private httpClient: HttpClient){
 
     //this.rxjs_demo();
@@ -47,14 +50,21 @@ export class SearchComponent {
                     //             console.log(response);
                     //         });
 
-                    this.httpClient
-                            .get<any>(url, {params: queryParameters, observe: 'body'})
+                    // this.httpClient
+                    //         .get<any>(url, {params: queryParameters, observe: 'body'})
+                    //         .pipe(
+                    //           map(data => data[1])
+                    //         )
+                    //         .subscribe((data) => {
+                    //             console.log(data);
+                    //             this.results = data;
+                    //         });
+
+
+                    this.$results =  this.httpClient.get<any>(url, {params: queryParameters, observe: 'body'})
                             .pipe(
                               map(data => data[1])
-                            )
-                            .subscribe((data) => {
-                                console.log(data);
-                            });
+                            );
 
 
                         
