@@ -1,19 +1,18 @@
 <h4>Add Product</h4>
 
-<!-- FormGroup -->
-<!-- myForm is a template variable which be a refernce of the formgroup -->
+
 <form #myForm="ngForm">
 
     <div class="form-group">
-        <label>Name</label>
-        <!-- FormControl(provided we use the ngModel) -->
+        <label>Product ID</label>
+        
         <input name="pid" class="form-control" placeholder="Id" 
                     [(ngModel)]="product.id" />
         
       </div>
   <div class="form-group">
     <label>Name</label>
-    <!-- FormControl(provided we use the ngModel) -->
+   
     <input name="pname" class="form-control" placeholder="Name" 
                 [(ngModel)]="product.name" />
     
@@ -21,7 +20,7 @@
 
   <div class="form-group">
     <label>Price</label>
-    <!-- FormControl(provided we use the ngModel) -->
+  
     <input
         name="pprice"
       type="number"
@@ -35,7 +34,7 @@
 
   <div class="form-group">
     <label>Description</label>
-    <!-- FormControl(provided we use the ngModel) -->
+   
     <input
         name="pdesc"
         class="form-control"
