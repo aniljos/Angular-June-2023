@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TokenService } from './services/token-service';
 import { TokenServiceImpl } from './services/token-service-impl';
 import { SearchComponent } from './search/search.component';
+import { GadgetsModule } from './gadgets/gadgets.module';
 
 //map the routes to the view(components)
 const routes: Routes = [
@@ -35,7 +36,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ProductsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GadgetsModule
   ],
   providers: [{provide: TokenService, useClass: TokenServiceImpl}],
   bootstrap: [AppComponent]
