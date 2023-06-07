@@ -12,12 +12,14 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TokenService } from './services/token-service';
 import { TokenServiceImpl } from './services/token-service-impl';
+import { SearchComponent } from './search/search.component';
 
 //map the routes to the view(components)
 const routes: Routes = [
   {path: "home", component: HelloComponent},
   {path: "binding", component: DataBindingComponent},
   {path: "login", component: LoginComponent},
+  {path: "search", component: SearchComponent},
   {path: "", redirectTo: "/home", pathMatch: "full"},
   {path: "**", component: RouteNotFoundComponent}
 ]
@@ -25,7 +27,7 @@ const routes: Routes = [
 // const service: TokenService = new TokenServiceImpl()
 @NgModule({
   declarations: [
-    AppComponent, HelloComponent, DataBindingComponent, RouteNotFoundComponent, LoginComponent
+    AppComponent, HelloComponent, DataBindingComponent, RouteNotFoundComponent, LoginComponent, SearchComponent
   ],
   imports: [
     BrowserModule, 
