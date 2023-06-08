@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Product } from '../../model/Product';
 import { Router } from '@angular/router';
 import {environment} from '../../../environments/environment'
+import { TokenService } from 'src/app/services/token-service';
 
 @Component({
   selector: 'app-list-products',
@@ -17,13 +18,16 @@ export class ListProductsComponent {
   private url: string;
 
   //dependency injection of HttpClient(import the HttpClinetModule)
-  constructor(private httpClient: HttpClient, private router: Router) {
+  constructor(private httpClient: HttpClient, private router: Router, private tokenService: TokenService) {
 
     this.url = environment.productsUrl;
     this.fetchProducts();
   }
 
   fetchProducts() {
+
+    //const accessToken = this.tokenService.getAccessToken();
+    //const headers = {"Authorization": `Bearer ${accessToken}`};
 
     this.httpClient.get<Array<Product>>(this.url)
       .subscribe({

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../model/Product';
 import { Location } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-edit-product',
@@ -22,7 +23,8 @@ export class EditProductComponent {
     activatedRoute.params.subscribe((data: any) => {
         
         this.id = data.id;
-        this.url = "http://localhost:9000/products/" + this.id;
+        //this.url = "http://localhost:9000/products/" + this.id;
+        this.url = environment.productsUrl + "/" +  this.id;
 
         this.httpClient.get<Product>(this.url)
                   .subscribe({

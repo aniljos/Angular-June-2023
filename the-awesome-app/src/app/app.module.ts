@@ -9,11 +9,14 @@ import {RouterModule, Routes} from '@angular/router';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
 import { ProductsModule } from './products/products.module';
 import { LoginComponent } from './login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenService } from './services/token-service';
 import { TokenServiceImpl } from './services/token-service-impl';
 import { SearchComponent } from './search/search.component';
-import { GadgetsModule } from './gadgets/gadgets.module';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+
+//static import
+//import { GadgetsModule } from './gadgets/gadgets.module';
 
 //map the routes to the view(components)
 const routes: Routes = [
@@ -21,6 +24,7 @@ const routes: Routes = [
   {path: "binding", component: DataBindingComponent},
   {path: "login", component: LoginComponent},
   {path: "search", component: SearchComponent},
+  {path: "gadgets", loadChildren: () => import('./gadgets/gadgets.module').then(m => m.GadgetsModule)},
   {path: "", redirectTo: "/home", pathMatch: "full"},
   {path: "**", component: RouteNotFoundComponent}
 ]
@@ -37,9 +41,14 @@ const routes: Routes = [
     ProductsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    GadgetsModule
+    //GadgetsModule
   ],
-  providers: [{provide: TokenService, useClass: TokenServiceImpl}],
+  providers: [
+    
+    {provide: TokenService, useClass: TokenServiceImpl}, 
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
