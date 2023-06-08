@@ -20,10 +20,14 @@ export class StoreComponent {
 
   }
 
-  add(item:Product, quantity: string){
+  // add(item:Product, quantity: string){
 
-    debugger;
-    this.service.addToCart(new CartItem(item, Number(quantity)));
+  //   debugger;
+  //   this.service.addToCart(new CartItem(item, Number(quantity)));
+  // }
+
+  save(cartItem: CartItem){
+    this.service.addToCart(cartItem);
   }
 
 }

@@ -6,6 +6,7 @@ import { ViewCartComponent } from './view-cart/view-cart.component';
 import {Routes, RouterModule} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { GadgetService } from './gadget.service';
+import { ProductItemComponent } from './product-item/product-item.component';
 
 const routes: Routes = [
   {path: "gadgets", component: MainComponent, children: [
@@ -19,7 +20,8 @@ const routes: Routes = [
   declarations: [
     MainComponent,
     StoreComponent,
-    ViewCartComponent
+    ViewCartComponent,
+    ProductItemComponent
   ],
   imports: [
     CommonModule, RouterModule.forChild(routes), HttpClientModule

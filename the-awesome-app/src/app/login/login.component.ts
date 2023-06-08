@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenService } from '../services/token-service';
@@ -10,10 +10,13 @@ import { TokenService } from '../services/token-service';
   styleUrls: ['./login.component.css'],
   //providers: []
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit{
 
   public loginFormGroup: FormGroup;
   public message: string ="";
+
+  @ViewChild("userNameInput")
+  public uNameInput!: ElementRef;
 
   constructor(private httpClient: HttpClient, private router: Router, private tokenService: TokenService){
 
@@ -22,6 +25,7 @@ export class LoginComponent {
       pwd: new FormControl("", [Validators.required], [])
     });
   }
+ 
 
   login(){
 
@@ -54,5 +58,11 @@ export class LoginComponent {
 
     
 
+  }
+
+
+  ngAfterViewInit(): void {
+    
+    this.uNameInput.nativeElement.focus();
   }
 }
