@@ -8,11 +8,11 @@
 
 <div>
     Count: <input type="number" [value]="count"/>
-    <p>Count : {{count}}</p>
+    <p id="ctr" class="test">Count : {{count}}</p>
 </div>
 
 <div>
-    <button (click)="inc($event)">Increment</button>
+    <button id="incBtn" (click)="inc($event)">Increment</button>
 </div>
 <br/>
 <div>
